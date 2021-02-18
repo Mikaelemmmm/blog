@@ -20,7 +20,7 @@ pipeline{
         // 定义第一个stage， 完成克隆源码的任务
         stage('Git'){
           steps{
-            git branch: '${BRANCH}', credentialsId: '', url: 'https://github.com/Mikaelemmmm/jenkinsdemo.git'
+            git branch: '${BRANCH}', credentialsId: '', url: 'https://github.com/Mikaelemmmm/blog.git'
           }
         }
 
@@ -29,7 +29,7 @@ pipeline{
         stage('Image Build And Publish'){
           steps{
               container("kaniko") {
-                  sh "kaniko -f `pwd`/Dockerfile -c `pwd` --destination=${ORIGIN_REPO}/${REPO}:${IMAGE_TAG} --skip-tls-verify"
+                  sh "kaniko -f `pwd`/app/user/api/Dockerfile -c `pwd` --destination=${ORIGIN_REPO}/${REPO}:${IMAGE_TAG} --skip-tls-verify"
               }
           }
         }
