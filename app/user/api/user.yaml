@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: user
-        image: user:v1.0.0
+        image: ${ORIGIN_REPO}/${REPO}:${IMAGE_TAG}
         lifecycle:
           preStop:
             exec:
